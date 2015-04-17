@@ -21,29 +21,6 @@ public class PhotoGalleryFragment extends Fragment {
     GridView mGridView;
     ArrayList<GalleryItem> mItems;
 
-    /*private class FetchItemsTask extends AsyncTask<Void,Void,Void> {*/
-    private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<GalleryItem>> {
-        @Override
-        /*protected Void doInBackground(Void... params) {*/
-        protected ArrayList<GalleryItem> doInBackground(Void... params) {
-            /*try {
-                String result = new FlickrFetcher().getUrl("http://www.google.com");
-                Log.i(TAG, "Fetched contents of URL: " + result);
-            } catch (IOException ioe) {
-                Log.e(TAG, "Failed to fetch URL: ", ioe);
-            }*/
-            /*new FlickrFetchr().fetchItems();
-            return null;*/
-            return new FlickrFetchr().fetchItems();
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<GalleryItem> items) {
-            mItems = items;
-            setupAdapter();
-        }
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +51,7 @@ public class PhotoGalleryFragment extends Fragment {
         }
     }
 
+    //inner class for adapter
     private class GalleryItemAdapter extends ArrayAdapter<GalleryItem> {
         public GalleryItemAdapter(ArrayList<GalleryItem> items) {
             super(getActivity(), 0, items);
@@ -88,6 +66,30 @@ public class PhotoGalleryFragment extends Fragment {
                     .findViewById(R.id.gallery_item_imageView);
             imageView.setImageResource(R.drawable.ic_launcher);
             return convertView;
+        }
+    }
+
+    //inner class for asyncTask
+    /*private class FetchItemsTask extends AsyncTask<Void,Void,Void> {*/
+    private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<GalleryItem>> {
+        @Override
+        /*protected Void doInBackground(Void... params) {*/
+        protected ArrayList<GalleryItem> doInBackground(Void... params) {
+            /*try {
+                String result = new FlickrFetcher().getUrl("http://www.google.com");
+                Log.i(TAG, "Fetched contents of URL: " + result);
+            } catch (IOException ioe) {
+                Log.e(TAG, "Failed to fetch URL: ", ioe);
+            }*/
+            /*new FlickrFetchr().fetchItems();
+            return null;*/
+            return new FlickrFetchr().fetchItems();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<GalleryItem> items) {
+            mItems = items;
+            setupAdapter();
         }
     }
 

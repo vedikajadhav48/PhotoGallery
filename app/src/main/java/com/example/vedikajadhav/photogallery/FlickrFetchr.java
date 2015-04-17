@@ -25,7 +25,7 @@ public class FlickrFetchr {
     private static final String API_KEY = "63c6a917a84c249095aec2b3a8646f09";
     private static final String METHOD_GET_RECENT = "flickr.photos.getRecent";
     private static final String PARAM_EXTRAS = "extras";
-    private static final String EXTRA_SMALL_URL = "url_s";
+    private static final String EXTRA_SMALL_URL = "www.flickr.com";
     private static final String XML_PHOTO = "photo";
 
     byte[] getUrlBytes(String urlSpec) throws IOException {
